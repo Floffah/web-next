@@ -12,4 +12,4 @@ _build/
 .elixir_ls
 assets
 priv
-src/lib/api/typegen.ts
+src/lib/api/types/typegen.ts
