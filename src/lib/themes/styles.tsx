@@ -14,8 +14,11 @@ export const GlobalStyles = createGlobalStyle<ThemeProps>`
         top: 0;
         left: 0;
         background-color: ${(props) => props.theme.back};
-        //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         font-family: 'Poppins', sans-serif;
+        text-rendering: optimizeLegibility;
+        image-rendering: optimizeQuality;
+        color-rendering: optimizeQuality;
+        shape-rendering: crispEdges;
     }
 
     p, span, li {
