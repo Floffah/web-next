@@ -57,7 +57,14 @@ const Magic: FC = () => {
         };
     }, [resize, ctx]);
 
-    return <MagicCanvas ref={ref} />;
+    return (
+        <MagicCanvas
+            ref={ref}
+            style={{
+                display: ref.current ? "block" : "none",
+            }}
+        />
+    );
 };
 
 export default Magic;

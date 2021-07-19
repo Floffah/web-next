@@ -4,4 +4,7 @@ module.exports = require("next-transpile-modules")(["crypto-random-string"])({
         modern: true,
     },
     webpack5: true,
+    images: {
+        domains: ["twemoji.maxcdn.com"],
+    },
 });
