@@ -3,12 +3,22 @@ import Image from "next/image";
 import { ThemeProps } from "../../../lib/themes/styles";
 import { shift } from "../../../lib/themes/resolve";
 
-export const NavBarContainer = styled.div`
+const ifBackground = css`
+    background-color: ${(p) => shift(p.theme.shiftback, 0.04, p.theme.back)};
+`;
+
+const ifNoBackground = css`
+    background-color: rgba(0, 0, 0, 0);
+`;
+
+export const NavBarContainer = styled.div<{ hasBackground: boolean }>`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 50px;
+    ${(p) => (p.hasBackground ? ifBackground : ifNoBackground)};
+    transition: background-color 0.25s;
 `;
 
 export const NavBarTitleArea = styled.div``;
@@ -105,7 +115,7 @@ export const NavBarFloffahTitle = styled.p<
     color: ${(props) => props.theme.front};
     font-weight: 800;
     font-size: 28px;
-    margin: 6px 0 0 15px;
+    margin: 5px 0 0 15px;
     user-select: none;
 
     ${(p) => (p.doingMagic ? glitching : "")}

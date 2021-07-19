@@ -1,10 +1,32 @@
 import { AppComponent } from "next/dist/next-server/lib/router/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { DefaultSeo } from "next-seo";
 import { ApplyGlobalStyles } from "../lib/themes/styles";
 import { OneDarkTheme } from "../lib/themes/one-dark";
+import { useAtom } from "jotai";
+import { isMobileAtom } from "../lib/state/atoms/view";
+import { useEffectOnce } from "react-use";
 
 const App: AppComponent = (p) => {
+    const [isMobile, setIsMobile] = useAtom(isMobileAtom);
+
+    useEffect(() => {
+        const resizeListener = () => {
+            if (!isMobile && window.innerWidth <= 940) setIsMobile(true);
+            else if (isMobile && window.innerWidth > 940) setIsMobile(false);
+        };
+
+        window.addEventListener("resize", resizeListener);
+
+        return () => {
+            window.removeEventListener("resize", resizeListener);
+        };
+    });
+
+    useEffectOnce(() => {
+        if (!isMobile && window.innerWidth <= 940) setIsMobile(true);
+    });
+
     return (
         <>
             <DefaultSeo

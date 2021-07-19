@@ -1,31 +1,38 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ThemeProps } from "../../../lib/themes/styles";
 import { shift } from "../../../lib/themes/resolve";
-import Emoji from "../../util/Emoji/Emoji";
 
-export const HeaderContainer = styled.div<ThemeProps>`
-    height: 300px;
+export const HeaderContainer = styled.div<ThemeProps & { isMobile: boolean }>`
+    height: ${(p) => (p.isMobile ? "calc(fit-content + 100px)" : "300px")};
     width: 100%;
     background-color: ${(p) => shift(p.theme.shiftback, 0.04, p.theme.back)};
+    overflow-y: auto;
+    overflow-x: hidden;
 `;
 
-export const HeaderWaveEmoji = styled(Emoji)``;
-
-export const HeaderMessageContainer = styled.div`
+export const HeaderMessageContainer = styled.div<{ isMobile: boolean }>`
     position: relative;
-    margin: auto;
-    top: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: ${(p) => (p.isMobile ? "55" : "100")}px auto auto auto;
+    ${(p) =>
+        p.isMobile
+            ? "display: block;"
+            : css`
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+              `}
+    text-align: ${(p) => (p.isMobile ? "center" : "left")};
 
-    span {
-        display: inline-block;
+    & div {
+        display: ${(p) => (p.isMobile ? "block" : "inline-block")};
     }
 
-    span:nth-child(2) {
+    p {
+        position: relative;
+        display: ${(p) => (p.isMobile ? "block" : "inline-block")};
         vertical-align: 17px;
+        ${(p) => (p.isMobile ? "top: -20px;" : "")}
         font-size: 35px;
-        margin-left: 15px;
+        margin-left: ${(p) => (p.isMobile ? "0" : "15px")};
     }
 `;

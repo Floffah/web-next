@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle<ThemeProps>`
         background-color: ${(props) => props.theme.back};
         font-family: 'Poppins', sans-serif;
         text-rendering: optimizeLegibility;
-        image-rendering: optimizeQuality;
+        image-rendering: smooth;
         color-rendering: optimizeQuality;
         shape-rendering: crispEdges;
     }
