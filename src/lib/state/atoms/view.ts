@@ -8,4 +8,8 @@ export const isMobileAtom = atom(
         : isMobile,
 );
 
-export const useMobile = () => useAtom(isMobileAtom)[0];
+export const useMobile = () => {
+    const [isMobile] = useAtom(isMobileAtom);
+
+    return isMobile;
+};

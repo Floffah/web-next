@@ -1,3 +1,4 @@
+src/lib/api/types/typegen.ts
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,webstorm,jetbrains+all,visualstudiocode,yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,webstorm,jetbrains+all,visualstudiocode,yarn

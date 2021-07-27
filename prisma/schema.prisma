@@ -8,11 +8,33 @@ generator client {
   previewFeatures = ["selectRelationCount", "orderByRelation", "orderByAggregateGroup"]
 }
 
-model User {
-    id String @id @default(dbgenerated("nanoid()")) @db.VarChar(11)
-    discordId String @unique
+//generator nexusPrisma {
+//  provider = "nexus-prisma"
+//}
 
-    username String
-    access String? @unique
-    refresh String? @unique
+model User {
+  id        Int    @id @default(autoincrement())
+  discordId String @unique
+
+  username String
+  access   String? @unique
+  refresh  String? @unique
+
+  role   Role? @relation(fields: [roleId], references: [id])
+  roleId Int?
+}
+
+model Product {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  pros String[]
+  cons String[]
+}
+
+model Role {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  users User[]
 }

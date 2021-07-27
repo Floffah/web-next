@@ -1,14 +1,10 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
-import {
-    NavBarContainer,
-    NavBarFloffahTitle,
-    NavBarTitleArea,
-    NavBarTitleMagicLetter,
-} from "./NavBar.styles";
+import { NavBarFloffahTitle } from "./NavBar.styles";
 import { useToggle } from "react-use";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
-import { magicRequestedAtom } from "../../../lib/state/atoms/magic";
+import { isMagicAtom } from "../../../lib/state/atoms/magic";
+
 // import floffahIcon from "/public/android-chrome-512x512.png";
 
 export interface NavBarProps {
@@ -18,17 +14,19 @@ export interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = (p) => {
     const [isToggled, toggle] = useToggle(false);
-    const [, setMagicRequested] = useAtom(magicRequestedAtom);
+    const [, setMagic] = useAtom(isMagicAtom);
     const [hasBackground, setHasBackground] = useState(false);
     const router = useRouter();
 
-    if (isToggled)
+    if (isToggled) {
+        router.prefetch("/magic", undefined, { priority: true });
         setTimeout(() => {
             if (isToggled) {
-                setMagicRequested(true);
+                setMagic(true);
                 router.push("/magic");
             }
         }, 2000);
+    }
 
     useEffect(() => {
         if (!p.forceBackground) {
@@ -39,34 +37,56 @@ const NavBar: FC<NavBarProps> = (p) => {
                     p.headerRef.current.offsetTop +
                         p.headerRef.current.offsetHeight;
 
-            const resizeListener = () => {
+            const scrollListener = () => {
                 const past = isPast();
                 if (!hasBackground && past) setHasBackground(true);
                 else if (hasBackground && !past) setHasBackground(false);
             };
 
-            window.addEventListener("resize", resizeListener);
+            window.addEventListener("scroll", scrollListener);
 
             return () => {
-                window.removeEventListener("resize", resizeListener);
+                window.removeEventListener("resize", scrollListener);
             };
         }
         return;
     }, [hasBackground, p.headerRef, p.forceBackground]);
 
     return (
-        <NavBarContainer hasBackground={p.forceBackground ?? hasBackground}>
-            <NavBarTitleArea>
-                {/*<NavBarFloffahIcon src={floffahIcon} height={50} width={50} />*/}
-                <NavBarFloffahTitle doingMagic={isToggled}>
-                    <span>Fl</span>
-                    <NavBarTitleMagicLetter onClick={() => toggle()}>
+        <div
+            className={
+                "fixed top-0 left-0 w-full h-12 transition-all z-50 bg-gray-900 overflow-hidden " +
+                (p.forceBackground ?? hasBackground
+                    ? "bg-gray-900"
+                    : "bg-transparent")
+            }
+        >
+            <div>
+                <NavBarFloffahTitle
+                    doingMagic={isToggled}
+                    className="inline-block text-gray-400 font-extrabold text-2:5xl m-0 mt-1.25 ml-3.5 select-none"
+                >
+                    <span
+                        onClick={() => router.push("/")}
+                        style={{ cursor: "pointer" }}
+                    >
+                        Fl
+                    </span>
+                    <span
+                        onClick={() => toggle()}
+                        className="transition-colors cursor-pointer hover:text-blue-500"
+                    >
                         o
-                    </NavBarTitleMagicLetter>
-                    <span>ffah</span>
+                    </span>
+                    <span
+                        onClick={() => router.push("/")}
+                        style={{ cursor: "pointer" }}
+                    >
+                        ffah
+                    </span>
                 </NavBarFloffahTitle>
-            </NavBarTitleArea>
-        </NavBarContainer>
+            </div>
+        </div>
     );
 };
 

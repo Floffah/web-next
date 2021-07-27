@@ -1,32 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import Image from "next/image";
-import { ThemeProps } from "../../../lib/themes/styles";
-import { shift } from "../../../lib/themes/resolve";
-
-const ifBackground = css`
-    background-color: ${(p) => shift(p.theme.shiftback, 0.04, p.theme.back)};
-`;
-
-const ifNoBackground = css`
-    background-color: rgba(0, 0, 0, 0);
-`;
-
-export const NavBarContainer = styled.div<{ hasBackground: boolean }>`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    ${(p) => (p.hasBackground ? ifBackground : ifNoBackground)};
-    transition: background-color 0.25s;
-`;
-
-export const NavBarTitleArea = styled.div``;
-
-export const NavBarFloffahIcon = styled(Image)`
-    border-radius: 50%;
-    display: inline-block;
-`;
+import tw from "twin.macro";
 
 const cssLoop = (
     steps: number,
@@ -69,7 +42,7 @@ ${cssLoop(
 )}
 `;
 
-const glitching = css<ThemeProps>`
+const glitching = css`
     &::before,
     &::after {
         color: ${(p) => p.theme.front};
@@ -81,8 +54,7 @@ const glitching = css<ThemeProps>`
         top: 0;
         pointer-events: none;
         margin: 6px 0 0 15px;
-        background-color: ${(p) =>
-            shift(p.theme.shiftback, 0.04, p.theme.back)};
+        ${tw`bg-gray-900`}
     }
 
     &::before {
@@ -108,24 +80,6 @@ const glitching = css<ThemeProps>`
     }
 `;
 
-export const NavBarFloffahTitle = styled.p<
-    ThemeProps & { doingMagic: boolean }
->`
-    display: inline-block;
-    color: ${(props) => props.theme.front};
-    font-weight: 800;
-    font-size: 28px;
-    margin: 5px 0 0 15px;
-    user-select: none;
-
+export const NavBarFloffahTitle = styled.p<{ doingMagic: boolean }>`
     ${(p) => (p.doingMagic ? glitching : "")}
-`;
-
-export const NavBarTitleMagicLetter = styled.span<ThemeProps>`
-    transition: color 0.25s;
-    cursor: pointer;
-
-    &:hover {
-        color: ${(p) => p.theme.primary};
-    }
 `;

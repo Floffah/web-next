@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const magicRequestedAtom = atom(false);
+export const isMagicAtom = atom(false);

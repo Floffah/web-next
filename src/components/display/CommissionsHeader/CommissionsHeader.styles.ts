@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import { shift } from "../../../lib/themes/resolve";
-import { ThemeProps } from "../../../lib/themes/styles";
+import styled, { css } from "styled-components";
+import tw from "twin.macro";
 
-export const CommissionsHeaderContainer = styled.div<ThemeProps>`
-    height: 300px;
-    width: 100%;
-    background-color: ${(p) => shift(p.theme.shiftback, 0.04, p.theme.back)};
-    overflow-y: auto;
-    overflow-x: hidden;
+export const CommissionsHeaderProductTab = styled.p<{ selected: boolean }>`
+    ${(p) =>
+        p.selected
+            ? css`
+                  ${tw`border-b-2 border-solid border-gray-500`}
+                  font-weight: 700;
+              `
+            : undefined}
 `;

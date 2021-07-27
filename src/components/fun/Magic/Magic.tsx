@@ -59,6 +59,7 @@ const Magic: FC = () => {
 
     return (
         <MagicCanvas
+            className="fixed w-full h-full"
             ref={ref}
             style={{
                 display: ref.current ? "block" : "none",
