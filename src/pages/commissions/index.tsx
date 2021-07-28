@@ -1,7 +1,6 @@
 import React, { FC, useRef } from "react";
 import CommissionsHeader from "../../components/display/CommissionsHeader/CommissionsHeader";
 import NavBar from "../../components/navigation/NavBar/NavBar";
-import { withDefaultUrql } from "../../lib/api/urql/urql";
 import { useQuery } from "urql";
 import gql from "graphql-tag";
 import { NexusGenRootTypes } from "../../lib/api/types/typegen";
@@ -51,4 +50,4 @@ const CommissionsPage: FC = () => {
     );
 };
 
-export default withDefaultUrql()(CommissionsPage);
+export default CommissionsPage;

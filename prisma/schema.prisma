@@ -37,4 +37,10 @@ model Role {
   name String @unique
 
   users User[]
+  permissions Permission[]
+}
+
+enum Permission {
+    ADMINISTRATOR
+    EDIT_PRODUCTS
 }

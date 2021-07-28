@@ -1041,10 +1041,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.4.3":
-  version: 16.4.3
-  resolution: "@types/node@npm:16.4.3"
-  checksum: 03195d10ef927ed0879500f002969fba75e6616714a53d91fe82dfdf4e0cd15228bf5c3a426d5447ed84b4947f2c07b40c317eddcbd2126552cc24bc88da7adc
+"@types/node@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "@types/node@npm:16.4.5"
+  checksum: 639222e5c711a1d24828c2b3b0687fb9d5c3f9cf1f67992101c3a6784430fdf1fe84ecb19e083fdebf8ce0ec165bc44954aa92ae0670f225ec52cd7fe78efd5a
   languageName: node
   linkType: hard
 
@@ -4352,17 +4352,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-query-complexity@npm:^0.8.1":
-  version: 0.8.1
-  resolution: "graphql-query-complexity@npm:0.8.1"
-  dependencies:
-    lodash.get: ^4.4.2
-  peerDependencies:
-    graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 7b76e3c8a54b3e1e71b34f66eca287951bdd04d9385085cd982e1a48636e8c98ca92d8f857b5a8de0dff519097d443de21f7fece4d368ea09a88e6d2c0d9dd40
-  languageName: node
-  linkType: hard
-
 "graphql-rate-limit@npm:^3.1.0":
   version: 3.1.0
   resolution: "graphql-rate-limit@npm:3.1.0"
@@ -6900,7 +6889,7 @@ __metadata:
     "@mdi/js": ^5.9.55
     "@mdi/react": ^1.5.0
     "@prisma/client": ^2.28.0
-    "@types/node": ^16.4.3
+    "@types/node": ^16.4.5
     "@types/react": ^17.0.15
     "@types/react-dom": ^17.0.9
     "@types/styled-components": ^5.1.11
@@ -6925,7 +6914,6 @@ __metadata:
     eslint-plugin-react: ^7.24.0
     graphql: ^15.5.1
     graphql-jit: ^0.5.2
-    graphql-query-complexity: ^0.8.1
     graphql-rate-limit: ^3.1.0
     graphql-relay: ^0.8.0
     graphql-tag: ^2.12.5

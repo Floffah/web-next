@@ -4,8 +4,7 @@ import { APISchema } from "../../lib/api/schema/schema";
 import { executor } from "../../lib/api/schema/execute";
 import { MicroContext } from "../../lib/api/types/context";
 import { NextApiHandler } from "next";
-import queryComplexity, { simpleEstimator } from "graphql-query-complexity";
-// import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
+import { getClientContext } from "../../lib/api/util/auth";
 
 require("ts-tiny-invariant");
 
@@ -15,18 +14,12 @@ const apollo = new ApolloServer({
     schema: APISchema,
     executor: executor(APISchema),
     introspection: true,
-    validationRules: [
-        queryComplexity({
-            estimators: [simpleEstimator({ defaultComplexity: 1 })],
-            maximumComplexity: 50,
-        }),
-    ],
-    // plugins:
-    //     process.env.NODE_ENV === "development"
-    //         ? [ApolloServerPluginLandingPageGraphQLPlayground()]
-    //         : undefined,
     context: async (c: MicroContext) => {
-        return { db, req: c.req };
+        return {
+            db,
+            req: c.req,
+            ...(await getClientContext(db, c.req.headers)),
+        };
     },
 });
 

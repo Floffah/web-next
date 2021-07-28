@@ -5,7 +5,6 @@ import Header from "../components/display/Header/Header";
 import InlineAlert from "../components/feedback/InlineAlert/InlineAlert";
 import Link from "next/link";
 import Emoji from "../components/util/Emoji/Emoji";
-import { withDefaultUrql } from "../lib/api/urql/urql";
 
 const IndexPage: FC = (_p) => {
     const headerRef = useRef<HTMLDivElement>(null);
@@ -31,4 +30,4 @@ const IndexPage: FC = (_p) => {
         </>
     );
 };
-export default withDefaultUrql()(IndexPage);
+export default IndexPage;

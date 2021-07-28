@@ -1,5 +1,5 @@
 import { AppComponent } from "next/dist/next-server/lib/router/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { DefaultSeo } from "next-seo";
 import { useAtom } from "jotai";
 import { isMobileAtom } from "../lib/state/atoms/view";
@@ -8,11 +8,16 @@ import { useRouter } from "next/router";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import "../styles/common.css";
+import { Manager, ManagerContext } from "../lib/state/Manager";
+import { useClient } from "urql";
+import { withDefaultUrql } from "../lib/api/urql/urql";
 // import "tailwindcss/tailwind.css";
 
 const App: AppComponent = (p) => {
     const router = useRouter();
     const [isMobile, setIsMobile] = useAtom(isMobileAtom);
+    const client = useClient();
+    const manager = useMemo(() => new Manager(client), [client]);
 
     useEffect(() => {
         if (
@@ -102,10 +107,12 @@ const App: AppComponent = (p) => {
                 }}
             />
             <div className="absolute w-full h-full my-0 top-0 left-0 bg-gray-800 text-gray-300 transition-all">
-                <p.Component {...p.pageProps} />
+                <ManagerContext.Provider value={manager}>
+                    <p.Component {...p.pageProps} />
+                </ManagerContext.Provider>
             </div>
         </>
     );
 };
 
-export default App;
+export default withDefaultUrql()(App as any);

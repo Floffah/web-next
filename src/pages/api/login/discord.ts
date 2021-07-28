@@ -40,7 +40,6 @@ const handler: NextApiHandler = async (req, res) => {
                 )
                 .toPromise();
         } catch (e) {
-            //res.status(400).send({ error: e.response.errors[0].message });
             res.redirect("/");
             return;
         }

@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { withDefaultUrql } from "../../lib/api/urql/urql";
 import { NextSeo } from "next-seo";
 import NavBar from "../../components/navigation/NavBar/NavBar";
 
@@ -12,4 +11,4 @@ const DashPage: FC = () => {
     );
 };
 
-export default withDefaultUrql()(DashPage);
+export default DashPage;

@@ -22,7 +22,6 @@ export const ProductFields = (t: ObjectDefinitionBlock<"Query">) => {
     t.connectionField("products", {
         type: Product,
         description: "Connection array of products",
-        complexity: 5,
         resolve: async (_r, a, c, _i) => {
             let take: number | undefined = undefined;
 

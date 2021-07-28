@@ -54,6 +54,12 @@ type PageInfo {
   startCursor: String
 }
 
+"""Role permissions"""
+enum Permission {
+  ADMINISTRATOR
+  EDIT_PRODUCTS
+}
+
 """GraphQL object representing a commission product"""
 type Product {
   """Product cons list"""
@@ -91,6 +97,15 @@ type ProductEdge {
 
 """Query"""
 type Query {
+  """Get a specific role"""
+  getRole(
+    """Role id to query"""
+    id: Int!
+  ): Role
+
+  """Gets the current authenticated user"""
+  me: User
+
   """For checking api latency"""
   ping: String
 
@@ -108,4 +123,29 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): ProductConnection
+}
+
+"""GraphQL object representing a service role"""
+type Role {
+  """Role ID"""
+  id: Int!
+
+  """Role name"""
+  name: String!
+  permissions: [Permission!]!
+}
+
+"""GraphQL object representing a service user"""
+type User {
+  """User's Discord ID"""
+  discordId: ID!
+
+  """User ID"""
+  id: Int!
+
+  """User's role ID"""
+  roleId: Int
+
+  """User's username"""
+  username: String!
 }

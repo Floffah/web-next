@@ -19,7 +19,6 @@ export const LoginMutationFields = (t: ObjectDefinitionBlock<"Mutation">) => {
     t.field("getAccess", {
         description: "Get access codes from the discord oauth process",
         type: AccessTokens,
-        complexity: 8,
         args: {
             access_token: nonNull(
                 stringArg({ description: "Discord access token" }),
@@ -71,7 +70,6 @@ export const LoginMutationFields = (t: ObjectDefinitionBlock<"Mutation">) => {
     t.field("refresh", {
         description: "Refresh your session and get new access tokens",
         type: AccessTokens,
-        complexity: 4,
         args: {
             refresh: nonNull(stringArg({ description: "Your refresh token" })),
             access: nonNull(
