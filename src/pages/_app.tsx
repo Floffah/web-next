@@ -6,11 +6,10 @@ import { isMobileAtom } from "../lib/state/atoms/view";
 import { ApiTokenName } from "../lib/util/storage/localstorage";
 import { useRouter } from "next/router";
 import { useHotkeys } from "react-hotkeys-hook";
-
-import "../styles/common.css";
 import { Manager, ManagerContext } from "../lib/state/Manager";
 import { useClient } from "urql";
 import { withDefaultUrql } from "../lib/api/urql/urql";
+import "../styles/common.css";
 // import "tailwindcss/tailwind.css";
 
 const App: AppComponent = (p) => {
