@@ -1,12 +1,15 @@
 import React, { FC, RefObject, useEffect } from "react";
 import { CommissionsHeaderProductTab } from "./CommissionsHeader.styles";
-import { NexusGenRootTypes } from "../../../lib/api/types/typegen";
 import { useAtom } from "jotai";
 import { commissionSelectedAtom } from "../../../lib/state/atoms/commissions";
+import { AppRouter } from "../../../lib/api/trpc/router";
+import { inferProcedureOutput } from "@trpc/server";
 
 export interface CommissionsHeaderProps {
     headerRef: RefObject<HTMLDivElement>;
-    products: NexusGenRootTypes["Product"][] | undefined;
+    products?: inferProcedureOutput<
+        AppRouter["_def"]["queries"]["products.list"]
+    >["items"];
     fetching?: boolean;
 }
 
@@ -16,7 +19,12 @@ const CommissionsHeader: FC<CommissionsHeaderProps> = (p) => {
     );
 
     useEffect(() => {
-        if (!p.fetching && p.products && !commissionSelected)
+        if (
+            !p.fetching &&
+            p.products &&
+            !commissionSelected &&
+            p.products.length > 0
+        )
             setCommissionSelected(p.products[0].id);
     }, [commissionSelected, p.fetching, p.products, setCommissionSelected]);
 

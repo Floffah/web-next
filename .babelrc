@@ -1,6 +1,5 @@
 {
   "presets": [
-    "@babel/preset-react",
     "next/babel"
   ],
   "plugins": [
@@ -18,7 +17,6 @@
     ],
     "babel-plugin-polished",
     "@babel/plugin-transform-react-jsx",
-    "@babel/plugin-transform-reserved-words",
-    "graphql-tag"
+    "@babel/plugin-transform-reserved-words"
   ]
 }

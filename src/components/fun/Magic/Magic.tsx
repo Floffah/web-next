@@ -17,23 +17,23 @@ function noise(ctx: CanvasRenderingContext2D) {
     }
 }
 
+const resize = (ctx: CanvasRenderingContext2D | undefined | null) => {
+    if (ctx) {
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+    }
+};
+
 const Magic: FC = () => {
     const ref = useRef<HTMLCanvasElement>(null);
     const ctx = ref.current?.getContext("2d");
 
-    const resize = () => {
-        if (ctx) {
-            ctx.canvas.width = window.innerWidth;
-            ctx.canvas.height = window.innerHeight;
-        }
-    };
-
     useEffect(() => {
-        const resizeListener = () => resize();
+        const resizeListener = () => resize(ctx);
 
         window.addEventListener("resize", resizeListener);
 
-        resize();
+        resize(ctx);
 
         let doRender = false;
         let cleaningUp = false;
@@ -55,7 +55,7 @@ const Magic: FC = () => {
             cleaningUp = true;
             window.removeEventListener("resize", resizeListener);
         };
-    }, [resize, ctx]);
+    }, [ctx]);
 
     return (
         <MagicCanvas

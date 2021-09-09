@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import NavBar from "../../components/navigation/NavBar/NavBar";
 
 export default function CollatzConjecturePage() {
     const [data, setData] = useState<[number, number[], string, string][]>([]);
@@ -56,6 +57,7 @@ export default function CollatzConjecturePage() {
     return (
         <>
             <NextSeo title="Collatz Conjecture Graph" />
+            <NavBar forceBackground={false} />
             <Line
                 data={{
                     labels: maxStepsArray,

@@ -4,25 +4,71 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["selectRelationCount", "orderByRelation", "orderByAggregateGroup"]
+  provider = "prisma-client-js"
 }
 
 //generator nexusPrisma {
 //  provider = "nexus-prisma"
 //}
 
+// next-auth
+
+model Account {
+  id                 String  @id @default(cuid())
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// users
+
 model User {
-  id        Int    @id @default(autoincrement())
-  discordId String @unique
+  id String    @id @default(cuid())
 
-  username String
-  access   String? @unique
-  refresh  String? @unique
+  // next-auth
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // end next-auth
 
-  role   Role? @relation(fields: [roleId], references: [id])
+  role   Role? @relation(fields: [roleId], references: [id], onDelete: Cascade)
   roleId Int?
 }
+
+// products
 
 model Product {
   id   Int    @id @default(autoincrement())
@@ -32,15 +78,17 @@ model Product {
   cons String[]
 }
 
+// permissions
+
 model Role {
   id   Int    @id @default(autoincrement())
   name String @unique
 
-  users User[]
+  users       User[]
   permissions Permission[]
 }
 
 enum Permission {
-    ADMINISTRATOR
-    EDIT_PRODUCTS
+  ADMINISTRATOR
+  EDIT_PRODUCTS
 }

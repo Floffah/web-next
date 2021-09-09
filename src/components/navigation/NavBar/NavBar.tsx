@@ -4,9 +4,9 @@ import { useToggle } from "react-use";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { isMagicAtom } from "../../../lib/state/atoms/magic";
-import { isLoggedIn } from "../../../lib/api/util/auth-client";
 import { useStorage } from "../../../lib/hooks/storage";
 import { ApiTokenName } from "../../../lib/util/storage/localstorage";
+import { signIn, useSession } from "next-auth/client";
 
 // import floffahIcon from "/public/android-chrome-512x512.png";
 
@@ -20,6 +20,7 @@ const NavBar: FC<NavBarProps> = (p) => {
     const [, setMagic] = useAtom(isMagicAtom);
     const [hasBackground, setHasBackground] = useState(false);
     const router = useRouter();
+    const [session] = useSession();
 
     useStorage([ApiTokenName]);
 
@@ -69,7 +70,7 @@ const NavBar: FC<NavBarProps> = (p) => {
             <div>
                 <NavBarFloffahTitle
                     doingMagic={isToggled}
-                    className="inline-block text-gray-400 font-extrabold text-2:5xl mt-1.25 ml-3.5 select-none"
+                    className="inline-block text-gray-400 font-extrabold text-2xl mt-1.5 ml-3.5 select-none"
                 >
                     <span
                         onClick={() => router.push("/")}
@@ -94,11 +95,11 @@ const NavBar: FC<NavBarProps> = (p) => {
                     <span
                         className="inline-block select-none cursor-pointer text-xl mt-2.5 mr-3.5"
                         onClick={() => {
-                            if (isLoggedIn()) router.push("/dash");
-                            else router.push("/api/login/discordoauth");
+                            if (session) router.push("/dash");
+                            else signIn("discord");
                         }}
                     >
-                        {isLoggedIn() ? "Dashboard" : "Login"}
+                        {session ? "Dashboard" : "Login"}
                     </span>
                 </div>
             </div>

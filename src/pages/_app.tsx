@@ -1,5 +1,4 @@
-import { AppComponent } from "next/dist/next-server/lib/router/router";
-import React, { useEffect, useMemo } from "react";
+import React, { FC, useEffect, useMemo } from "react";
 import { DefaultSeo } from "next-seo";
 import { useAtom } from "jotai";
 import { isMobileAtom } from "../lib/state/atoms/view";
@@ -7,16 +6,17 @@ import { ApiTokenName } from "../lib/util/storage/localstorage";
 import { useRouter } from "next/router";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Manager, ManagerContext } from "../lib/state/Manager";
-import { useClient } from "urql";
-import { withDefaultUrql } from "../lib/api/urql/urql";
 import "../styles/common.css";
+import { AppProps } from "next/app";
+import { withTRPC } from "@trpc/next";
+import { AppRouter } from "../lib/api/trpc/router";
+import ErrorBoundary from "../components/util/ErrorBoundary";
 // import "tailwindcss/tailwind.css";
 
-const App: AppComponent = (p) => {
+const App: FC<AppProps> = (p) => {
     const router = useRouter();
     const [isMobile, setIsMobile] = useAtom(isMobileAtom);
-    const client = useClient();
-    const manager = useMemo(() => new Manager(client), [client]);
+    const manager = useMemo(() => new Manager(), []);
 
     useEffect(() => {
         if (
@@ -114,4 +114,27 @@ const App: AppComponent = (p) => {
     );
 };
 
-export default withDefaultUrql()(App as any);
+// export default withDefaultUrql()(App as any);
+
+const TRPCApp = withTRPC<AppRouter>({
+    config: (_c) => {
+        const url =
+            process.env.NODE_ENV === "production"
+                ? `https://next.floffah.dev/api/trpc`
+                : "http://localhost:3000/api/trpc";
+
+        return {
+            url,
+        };
+    },
+})(App);
+
+export default function BoundariedApp(p: AppProps) {
+    return (
+        <ErrorBoundary>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
+            <TRPCApp {...p} />
+        </ErrorBoundary>
+    );
+}

@@ -1,12 +1,15 @@
 import React, { FC } from "react";
-import { NexusGenRootTypes } from "../../../lib/api/types/typegen";
 import { useAtom } from "jotai";
 import { commissionSelectedAtom } from "../../../lib/state/atoms/commissions";
 import Emoji from "../../util/Emoji/Emoji";
 import { useMobile } from "../../../lib/state/atoms/view";
+import { inferProcedureOutput } from "@trpc/server";
+import { AppRouter } from "../../../lib/api/trpc/router";
 
 export interface CommissionsProsAndConsProps {
-    products: NexusGenRootTypes["Product"][] | undefined;
+    products?: inferProcedureOutput<
+        AppRouter["_def"]["queries"]["products.list"]
+    >["items"];
     fetching?: boolean;
 }
 
