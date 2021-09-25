@@ -1,12 +1,10 @@
 import { inferAsyncReturnType, router } from "@trpc/server";
-import { PrismaClient } from "@prisma/client";
 import { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { getSession } from "next-auth/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "../db";
 
 export async function createContext(ctx: CreateNextContextOptions) {
-    const session = await getSession({ req: ctx.req, ctx });
+    const session = await getSession({ req: ctx.req });
 
     return {
         prisma,

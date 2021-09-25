@@ -11,6 +11,8 @@ import { AppProps } from "next/app";
 import { withTRPC } from "@trpc/next";
 import { AppRouter } from "../lib/api/trpc/router";
 import ErrorBoundary from "../components/util/ErrorBoundary";
+import { Provider } from "next-auth/client";
+import { StyledScrollbar } from "../styles/Scrollbar";
 // import "tailwindcss/tailwind.css";
 
 const App: FC<AppProps> = (p) => {
@@ -105,11 +107,11 @@ const App: FC<AppProps> = (p) => {
                     ],
                 }}
             />
-            <div className="absolute w-full h-full my-0 top-0 left-0 bg-gray-800 text-gray-300 transition-all">
+            <StyledScrollbar className="fixed w-full h-full my-0 top-0 left-0 bg-gray-800 text-gray-300 transition-all overflow-y-auto">
                 <ManagerContext.Provider value={manager}>
                     <p.Component {...p.pageProps} />
                 </ManagerContext.Provider>
-            </div>
+            </StyledScrollbar>
         </>
     );
 };
@@ -132,9 +134,11 @@ const TRPCApp = withTRPC<AppRouter>({
 export default function BoundariedApp(p: AppProps) {
     return (
         <ErrorBoundary>
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
-            <TRPCApp {...p} />
+            <Provider>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
+                <TRPCApp {...p} />
+            </Provider>
         </ErrorBoundary>
     );
 }

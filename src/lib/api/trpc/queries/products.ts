@@ -9,19 +9,21 @@ export const productRouter = createRouter().query("list", {
     resolve: async (a) => {
         const limit = a.input.limit ?? 50;
 
-        const items = await a.ctx.prisma.product.findMany({
-            take: limit + 1,
-            cursor: a.input.cursor ? { id: a.input.cursor } : undefined,
-            orderBy: {
-                id: "asc",
-            },
-            select: {
-                id: true,
-                name: true,
-                pros: true,
-                cons: true,
-            },
-        });
+        const items = (
+            await a.ctx.prisma.product.findMany({
+                take: limit + 1,
+                cursor: a.input.cursor ? { id: a.input.cursor } : undefined,
+                orderBy: {
+                    id: "asc",
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    pros: true,
+                    cons: true,
+                },
+            })
+        ).map(({ id, name, pros, cons }) => ({ id, name, pros, cons })); // sanitize
 
         let nextCursor: typeof a.input.cursor | null = null;
         if (items.length > limit) {

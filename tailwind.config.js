@@ -3,7 +3,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
     mode: "jit",
-    important: true,
+    // important: true,
     darkMode: "class",
     i18n: {
         locales: ["en-US"],
@@ -20,8 +20,15 @@ module.exports = {
                 gray: {
                     ...colors.blueGray,
                     350: "#bdcad9",
-                    950: "#090c13", //"#07090f",
+                    950: "#090c13",
                 },
+            },
+
+            minWidth: {
+                "10/12": (10 / 12) * 100 + "%",
+            },
+            maxWidth: {
+                "10/12": (10 / 12) * 100 + "%",
             },
 
             fontFamily: {
@@ -36,6 +43,7 @@ module.exports = {
                 0.25: "0.0625rem",
                 30: "7.5rem",
                 38: "9.5rem",
+                inherit: "inherit",
             },
             height: {
                 fit: "fit-content",
@@ -46,6 +54,7 @@ module.exports = {
             margin: {
                 0.25: "0.0625rem",
                 1.25: "0.3125rem",
+                u: "unset",
             },
             borderWidth: {
                 7: "7px",
