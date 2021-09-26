@@ -21,7 +21,12 @@ const CommissionsProsAndCons: FC<CommissionsProsAndConsProps> = (p) => {
     if (p.fetching || !p.products) return <></>;
 
     const commission = p.products.find((p) => p.id === commissionSelected);
-    if (!commission) return <></>;
+    if (!commission)
+        return (
+            <p className="absolute top-56 h-fit w-fit translate-center-x text-gray-500 text-lg select-none">
+                No data
+            </p>
+        );
 
     return (
         <>

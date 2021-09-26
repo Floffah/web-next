@@ -7,6 +7,8 @@ import { isMagicAtom } from "../../../lib/state/atoms/magic";
 import { useStorage } from "../../../lib/hooks/storage";
 import { ApiTokenName } from "../../../lib/util/storage/localstorage";
 import { signIn, useSession } from "next-auth/client";
+import Icon from "@mdi/react";
+import { mdiLoading } from "@mdi/js";
 
 // import floffahIcon from "/public/android-chrome-512x512.png";
 
@@ -20,7 +22,8 @@ const NavBar: FC<NavBarProps> = (p) => {
     const [, setMagic] = useAtom(isMagicAtom);
     const [hasBackground, setHasBackground] = useState(false);
     const router = useRouter();
-    const [session] = useSession();
+    const [session, sessionLoading] = useSession();
+    const [signingIn, setSigningIn] = useState(false);
 
     useStorage([ApiTokenName]);
 
@@ -92,11 +95,21 @@ const NavBar: FC<NavBarProps> = (p) => {
                     </span>
                 </NavBarFloffahTitle>
                 <div className="float-right relative">
+                    {(sessionLoading || signingIn) && (
+                        <Icon
+                            path={mdiLoading}
+                            size={1}
+                            className="inline-block animate-spin align-top mt-3 mr-1"
+                        />
+                    )}
                     <span
                         className="inline-block select-none cursor-pointer text-xl mt-2.5 mr-3.5"
                         onClick={() => {
                             if (session) router.push("/dash");
-                            else signIn("discord");
+                            else {
+                                setSigningIn(true);
+                                signIn("discord");
+                            }
                         }}
                     >
                         {session ? "Dashboard" : "Login"}

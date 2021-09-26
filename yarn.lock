@@ -845,55 +845,55 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/client@npm:^9.7.0":
-  version: 9.7.0
-  resolution: "@trpc/client@npm:9.7.0"
+"@trpc/client@npm:^9.8.0":
+  version: 9.8.0
+  resolution: "@trpc/client@npm:9.8.0"
   dependencies:
     "@babel/runtime": ^7.9.0
-    "@trpc/server": ^9.7.0
-  checksum: 507441092ad8dbc9471533fe55e9ff4d69a5421c7e855d0bdd8429431f39614816473171d6ab19c4da99bc95a2a1545e8f02eabd8a26d2582e2e26edbf3e8b5c
+    "@trpc/server": ^9.8.0
+  checksum: 85bd5c83df45043f18d89a6b29c72560ae32445c84651faa8c395f4ec6c7d868f4b008cf6ae78f51b28dd3b32778025875a7b6c2a0afd0add0d6df682d112883
   languageName: node
   linkType: hard
 
-"@trpc/next@npm:^9.7.0":
-  version: 9.7.0
-  resolution: "@trpc/next@npm:9.7.0"
+"@trpc/next@npm:^9.8.0":
+  version: 9.8.0
+  resolution: "@trpc/next@npm:9.8.0"
   dependencies:
     "@babel/runtime": ^7.9.0
-    "@trpc/client": ^9.7.0
-    "@trpc/react": ^9.7.0
-    "@trpc/server": ^9.7.0
+    "@trpc/client": ^9.8.0
+    "@trpc/react": ^9.8.0
+    "@trpc/server": ^9.8.0
     react-ssr-prepass: ^1.4.0
   peerDependencies:
     next: ^11.1.0
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     react-query: ^3.0.0
-  checksum: 9dfe3be9eddab5bd24565f33af34ffc7eafbbe6b001ad7d6581cf569249be45835541bff65f5b34141b1e1af19364bae1d7a236f18bd88ee19075092129408f9
+  checksum: 2fb6feabe24046f852515ceb1d0005316bfb80e7df0c302b6bb32dbb1aaf1f0507c585df243f6ae177efc4dc9a9178f830fd87f352f0592c6dc64e3ce0b3f040
   languageName: node
   linkType: hard
 
-"@trpc/react@npm:^9.7.0":
-  version: 9.7.0
-  resolution: "@trpc/react@npm:9.7.0"
+"@trpc/react@npm:^9.8.0":
+  version: 9.8.0
+  resolution: "@trpc/react@npm:9.8.0"
   dependencies:
     "@babel/runtime": ^7.9.0
-    "@trpc/client": ^9.7.0
-    "@trpc/server": ^9.7.0
+    "@trpc/client": ^9.8.0
+    "@trpc/server": ^9.8.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     react-query: ^3.0.0
-  checksum: d2ea105cf69168b5ee19726d18509199ab4f512dd2b735ae82d31235d7a5b02cb4a1a16832da1c30100f3d7850db71f7eb30f20ff512ff4619897dd918f085f3
+  checksum: 507e36461df0f2aee700fd0aaca8991eef6ad76c1751724064a05a23658e49fef842bc8e63006ba5d94772aca6f98f68998ab6cb24b710136a05c3f372a70d49
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:^9.7.0":
-  version: 9.7.0
-  resolution: "@trpc/server@npm:9.7.0"
+"@trpc/server@npm:^9.8.0":
+  version: 9.8.0
+  resolution: "@trpc/server@npm:9.8.0"
   dependencies:
     tslib: ^2.1.0
-  checksum: 35163f29622ae177e8c82c3b1d7360bd46aa86b6a01f184311aa6637edd32856ff7620cf9e199d6293b945a944110898e157814d835d0eb70ca9f4abcf91e6f8
+  checksum: 17ad0576af009a26d151e3d061ea0f07390ce7a22cf6678cf8ad689b56b029988a1f41d7fedad7cf072375925c9200adc4ccf458eab2c8416503c31d09fc7fa2
   languageName: node
   linkType: hard
 
@@ -983,10 +983,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.9.6":
+"@types/node@npm:*":
   version: 16.9.6
   resolution: "@types/node@npm:16.9.6"
   checksum: 1c11ff4b58af87ddade05784e90bb5a2fe01f461ce489fdb1428d89e709695a26b0dcbac0520305911f5e4017561416747e544f1b9ec36649ccbfad6ffff4a0a
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.10.1":
+  version: 16.10.1
+  resolution: "@types/node@npm:16.10.1"
+  checksum: 84d7f082e9421fdf1f08dbe00b66848897b2675eacc94a4fa445c4d34cef57c901ecd3276d03ebe110607a848d3df0ab33816aeff51a234e036111dd8ef1422f
   languageName: node
   linkType: hard
 
@@ -1724,7 +1731,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.5, autoprefixer@npm:^10.3.5":
+"autoprefixer@npm:^10.2.5":
   version: 10.3.5
   resolution: "autoprefixer@npm:10.3.5"
   dependencies:
@@ -1739,6 +1746,24 @@ __metadata:
   bin:
     autoprefixer: bin/autoprefixer
   checksum: 0626aece9a59df50f682fcfa5ca29aaf63526ca85a60a7fe08f3da9ff6a730d99ff727068e84849f49c17ab5782658bc2085d932e04a1e49e530c7d357c244a9
+  languageName: node
+  linkType: hard
+
+"autoprefixer@npm:^10.3.6":
+  version: 10.3.6
+  resolution: "autoprefixer@npm:10.3.6"
+  dependencies:
+    browserslist: ^4.17.1
+    caniuse-lite: ^1.0.30001260
+    fraction.js: ^4.1.1
+    nanocolors: ^0.2.8
+    normalize-range: ^0.1.2
+    postcss-value-parser: ^4.1.0
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: 432fdba79e8be1c310acef3bf31e1ec02139222ce5a2134857d5ed12a659eef319cc3f206cb79f5d9b204baa2f08ccfe688b4b227294354dd0fae6976dde0876
   languageName: node
   linkType: hard
 
@@ -2245,7 +2270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001202, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001228, caniuse-lite@npm:^1.0.30001259":
+"caniuse-lite@npm:^1.0.30001202, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001228, caniuse-lite@npm:^1.0.30001259, caniuse-lite@npm:^1.0.30001260":
   version: 1.0.30001260
   resolution: "caniuse-lite@npm:1.0.30001260"
   dependencies:
@@ -6015,6 +6040,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanocolors@npm:^0.2.2, nanocolors@npm:^0.2.8":
+  version: 0.2.9
+  resolution: "nanocolors@npm:0.2.9"
+  checksum: f68054fe30942b46b547ebf0a9479ce65387a26781dd30d02c403a333a54f8ae6360f9b9b0c3fd13a13d28c70f373021e75e77b14dbc8953008536597d096bb6
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^3.1.23, nanoid@npm:^3.1.25":
   version: 3.1.25
   resolution: "nanoid@npm:3.1.25"
@@ -6979,18 +7011,18 @@ __metadata:
     "@mdi/react": ^1.5.0
     "@next-auth/prisma-adapter": ^0.5.4
     "@prisma/client": ^3.1.1
-    "@trpc/client": ^9.7.0
-    "@trpc/next": ^9.7.0
-    "@trpc/react": ^9.7.0
-    "@trpc/server": ^9.7.0
-    "@types/node": ^16.9.6
+    "@trpc/client": ^9.8.0
+    "@trpc/next": ^9.8.0
+    "@trpc/react": ^9.8.0
+    "@trpc/server": ^9.8.0
+    "@types/node": ^16.10.1
     "@types/react": ^17.0.24
     "@types/react-dom": ^17.0.9
     "@types/styled-components": ^5.1.14
     "@types/twemoji": ^12.1.2
     "@typescript-eslint/eslint-plugin": ^4.31.2
     "@typescript-eslint/parser": ^4.31.2
-    autoprefixer: ^10.3.5
+    autoprefixer: ^10.3.6
     axios: ^0.21.4
     babel-plugin-macros: ^3.1.0
     babel-plugin-polished: ^1.1.0
@@ -7008,24 +7040,24 @@ __metadata:
     next-transpile-modules: ^8.0.0
     npm-check-updates: ^11.8.5
     polished: ^4.1.3
-    postcss: ^8.3.7
+    postcss: ^8.3.8
     postcss-import: ^14.0.2
     prettier: ^2.4.1
     prisma: ^3.1.1
     react: ^17.0.2
-    react-device-detect: ^1.17.0
+    react-device-detect: ^2.0.0
     react-dom: ^17.0.2
-    react-hotkeys-hook: ^3.4.1
+    react-hotkeys-hook: ^3.4.3
     react-is: ^17.0.2
     react-query: ^3.24.4
     react-use: ^17.3.1
     styled-components: ^5.3.1
-    tailwindcss: ^2.2.15
+    tailwindcss: ^2.2.16
     twemoji: ^13.1.0
     twin.macro: ^2.7.0
     typescript: ^4.4.3
     webpack: ^5.54.0
-    zod: ^3.8.2
+    zod: ^3.9.1
   languageName: unknown
   linkType: soft
 
@@ -7201,7 +7233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.6, postcss@npm:^8.1.8, postcss@npm:^8.2.1, postcss@npm:^8.3.7":
+"postcss@npm:^8.1.6, postcss@npm:^8.1.8, postcss@npm:^8.2.1":
   version: 8.3.7
   resolution: "postcss@npm:8.3.7"
   dependencies:
@@ -7209,6 +7241,17 @@ __metadata:
     nanoid: ^3.1.25
     source-map-js: ^0.6.2
   checksum: 6b8c80611045787efa9900b1a278ec71393a12530a1c1f14baadcd6076e753791edd9bb9ef36c258cac450bc95dc3542ce2a4b6f21d5087875b91daa87422fc5
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.3.8":
+  version: 8.3.8
+  resolution: "postcss@npm:8.3.8"
+  dependencies:
+    nanocolors: ^0.2.2
+    nanoid: ^3.1.25
+    source-map-js: ^0.6.2
+  checksum: 20073f3f70487e9fa8d40e930d02595c4d96b7db8b2142ee4efe8e0c9a54c844c720370e178aef57c12d2d5bf65592cfdd1d020a74bf2840bc58650590713a35
   languageName: node
   linkType: hard
 
@@ -7521,15 +7564,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-device-detect@npm:^1.17.0":
-  version: 1.17.0
-  resolution: "react-device-detect@npm:1.17.0"
+"react-device-detect@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-device-detect@npm:2.0.0"
   dependencies:
-    ua-parser-js: ^0.7.24
+    ua-parser-js: ^0.7.28
   peerDependencies:
     react: ">= 0.14.0 < 18.0.0"
     react-dom: ">= 0.14.0 < 18.0.0"
-  checksum: bd3583e392af0e807f5329c0763d4f4f15d211363c3cfbb5308221a874faf68a7d7ac339f3c0a4d0c5878e04eaf859e9a7405f2a8ee4a57e739ac7762c1907a1
+  checksum: 2a1a40723b64047c140ae06cf6de010732386fb4a1355fcbf95ab76a4369132547b278635d4f703d910fb693f7ab3cff8136152463b8d0a128ac313cf893c0d6
   languageName: node
   linkType: hard
 
@@ -7546,15 +7589,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hotkeys-hook@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "react-hotkeys-hook@npm:3.4.1"
+"react-hotkeys-hook@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "react-hotkeys-hook@npm:3.4.3"
   dependencies:
     hotkeys-js: 3.8.7
   peerDependencies:
     react: ">=16.8.1"
     react-dom: ">=16.8.1"
-  checksum: cf86d9c8d45820dee754fd14f8f17375bc2f725e91546ecfb5605b719b936c13934f2df4111bc3b212552260502ed016459e8c800c47f3028ed850dfff8fc1de
+  checksum: 1e2ad8572163f975c0cc32c144c4eed910f296ab1f5fba5597f500e00d78dd37f3f1aa7a6914efa10596ec08dcaa911ea9a52053294d4228d6d85e90a16f3881
   languageName: node
   linkType: hard
 
@@ -8835,7 +8878,53 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.2.15, tailwindcss@npm:^2.2.7":
+"tailwindcss@npm:^2.2.16":
+  version: 2.2.16
+  resolution: "tailwindcss@npm:2.2.16"
+  dependencies:
+    arg: ^5.0.1
+    bytes: ^3.0.0
+    chalk: ^4.1.2
+    chokidar: ^3.5.2
+    color: ^4.0.1
+    cosmiconfig: ^7.0.1
+    detective: ^5.2.0
+    didyoumean: ^1.2.2
+    dlv: ^1.1.3
+    fast-glob: ^3.2.7
+    fs-extra: ^10.0.0
+    glob-parent: ^6.0.1
+    html-tags: ^3.1.0
+    is-color-stop: ^1.1.0
+    is-glob: ^4.0.1
+    lodash: ^4.17.21
+    lodash.topath: ^4.5.2
+    modern-normalize: ^1.1.0
+    node-emoji: ^1.11.0
+    normalize-path: ^3.0.0
+    object-hash: ^2.2.0
+    postcss-js: ^3.0.3
+    postcss-load-config: ^3.1.0
+    postcss-nested: 5.0.6
+    postcss-selector-parser: ^6.0.6
+    postcss-value-parser: ^4.1.0
+    pretty-hrtime: ^1.0.3
+    purgecss: ^4.0.3
+    quick-lru: ^5.1.1
+    reduce-css-calc: ^2.1.8
+    resolve: ^1.20.0
+    tmp: ^0.2.1
+  peerDependencies:
+    autoprefixer: ^10.0.2
+    postcss: ^8.0.9
+  bin:
+    tailwind: lib/cli.js
+    tailwindcss: lib/cli.js
+  checksum: 4c8ac0503ab5f3e868779a651cc0d605a435e8dd072f21fb1ed31cadc7d253b6b27109b8224e10aa4d846fee019ac839289b1f4740bc25df3c62170732650cc8
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^2.2.7":
   version: 2.2.15
   resolution: "tailwindcss@npm:2.2.15"
   dependencies:
@@ -9310,7 +9399,7 @@ typescript@^4.4.3:
   languageName: node
   linkType: hard
 
-"ua-parser-js@npm:^0.7.24":
+"ua-parser-js@npm:^0.7.28":
   version: 0.7.28
   resolution: "ua-parser-js@npm:0.7.28"
   checksum: a7da4ad54527211e878ee016c2ef64efad5c2f5a31277d36c9da93b4c89ecaa64f391ad4cf158ada76a9ad8e53004a950705ff1c2f27a52ca8bfb3f1381c39ff
@@ -9845,9 +9934,9 @@ typescript@^4.4.3:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.8.2":
-  version: 3.8.2
-  resolution: "zod@npm:3.8.2"
-  checksum: e11e3936956159471a8a1d34b4edd8963b88ad5ffaf4fe707a33f2781e90d8e2025ed02ca7ab33eb95d516745ec4b94d05302683dd8ec97c03ae0e06609a257b
+"zod@npm:^3.9.1":
+  version: 3.9.1
+  resolution: "zod@npm:3.9.1"
+  checksum: 5a733058fe341e6b6771806c3366515fdac524dcd45659070d146ba3ceb32ea993403cd1d6c46b24a81aa3757b1399a93e729b8f64b110041868c8fd975716c2
   languageName: node
   linkType: hard
