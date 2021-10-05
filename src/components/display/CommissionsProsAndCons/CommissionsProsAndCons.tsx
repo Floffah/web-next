@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { useAtom } from "jotai";
 import { commissionSelectedAtom } from "../../../lib/state/atoms/commissions";
 import Emoji from "../../util/Emoji/Emoji";
 import { useMobile } from "../../../lib/state/atoms/view";
 import { AppRouter } from "../../../lib/api/trpc/router";
 import { inferProcedureOutput } from "@trpc/server";
 import Button from "../../input/Button";
+import { useAtom } from "jotai";
 
 export interface CommissionsProsAndConsProps {
     products?: inferProcedureOutput<

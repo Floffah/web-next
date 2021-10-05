@@ -1,4 +1,6 @@
 import React from "react";
+// very stupid error
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, {
     DocumentContext,
     Head,
