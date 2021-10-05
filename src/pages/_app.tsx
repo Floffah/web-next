@@ -13,6 +13,7 @@ import { AppRouter } from "../lib/api/trpc/router";
 import ErrorBoundary from "../components/util/ErrorBoundary";
 import { Provider } from "next-auth/client";
 import { StyledScrollbar } from "../styles/Scrollbar";
+import RenderSaver from "../components/util/Rendersaver";
 // import "tailwindcss/tailwind.css";
 
 const App: FC<AppProps> = (p) => {
@@ -112,6 +113,7 @@ const App: FC<AppProps> = (p) => {
                     <p.Component {...p.pageProps} />
                 </ManagerContext.Provider>
             </StyledScrollbar>
+            <RenderSaver />
         </>
     );
 };
