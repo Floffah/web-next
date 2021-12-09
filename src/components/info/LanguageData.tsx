@@ -6,11 +6,7 @@ import { LanguageDataDetails } from "./LanguageData.styles";
 import { c } from "../../lib/util/class";
 import { Hint, useHint } from "../../lib/hooks/hints";
 import { Icon } from "@mdi/react";
-import {
-    mdiCursorDefault,
-    mdiCursorDefaultClick,
-    mdiCursorDefaultClickOutline,
-} from "@mdi/js";
+import { mdiCursorDefaultClickOutline } from "@mdi/js";
 
 export default function LanguageData() {
     const [selected, setSelected] = useState<null | keyof typeof languages>(
