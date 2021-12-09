@@ -6,9 +6,9 @@ import { useAtom } from "jotai";
 import { isMagicAtom } from "../../../lib/state/atoms/magic";
 import { useStorage } from "../../../lib/hooks/storage";
 import { ApiTokenName } from "../../../lib/util/storage/localstorage";
-import { signIn, useSession } from "next-auth/client";
 import Icon from "@mdi/react";
 import { mdiLoading } from "@mdi/js";
+import { signIn, useSession } from "next-auth/react";
 
 // import floffahIcon from "/public/android-chrome-512x512.png";
 
@@ -22,7 +22,7 @@ const NavBar: FC<NavBarProps> = (p) => {
     const [, setMagic] = useAtom(isMagicAtom);
     const [hasBackground, setHasBackground] = useState(false);
     const router = useRouter();
-    const [session, sessionLoading] = useSession();
+    const session = useSession();
     const [signingIn, setSigningIn] = useState(false);
 
     useStorage([ApiTokenName]);
@@ -95,7 +95,7 @@ const NavBar: FC<NavBarProps> = (p) => {
                     </span>
                 </NavBarFloffahTitle>
                 <div className="float-right relative">
-                    {(sessionLoading || signingIn) && (
+                    {(session.status === "loading" || signingIn) && (
                         <Icon
                             path={mdiLoading}
                             size={1}
@@ -105,14 +105,14 @@ const NavBar: FC<NavBarProps> = (p) => {
                     <span
                         className="inline-block select-none cursor-pointer text-xl mt-2.5 mr-3.5"
                         onClick={() => {
-                            if (session) router.push("/dash");
+                            if (session.data) router.push("/dash");
                             else {
                                 setSigningIn(true);
                                 signIn("discord");
                             }
                         }}
                     >
-                        {session ? "Dashboard" : "Login"}
+                        {session.data ? "Dashboard" : "Login"}
                     </span>
                 </div>
             </div>

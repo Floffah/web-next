@@ -55,7 +55,7 @@ const Magic: FC = () => {
             cleaningUp = true;
             window.removeEventListener("resize", resizeListener);
         };
-    }, [ctx]);
+    }, [ctx, ref]);
 
     return (
         <MagicCanvas
