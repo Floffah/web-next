@@ -1,6 +1,10 @@
 {
     "name": "personal-new",
     "private": true,
+    "scripts": {
+        "prisma-generate-prod": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy'",
+        "migrate-prod": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
+    },
     "devDependencies": {
         "@babel/core": "^7.16.0",
         "@babel/plugin-transform-reserved-words": "^7.16.0",
