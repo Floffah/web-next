@@ -2,7 +2,7 @@
     "name": "personal-new",
     "private": true,
     "scripts": {
-        "prisma-generate-prod": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy'",
+        "prisma-generate-prod": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy' prisma generate",
         "migrate-prod": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
     },
     "devDependencies": {
