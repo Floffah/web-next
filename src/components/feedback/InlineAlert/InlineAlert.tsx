@@ -1,5 +1,4 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
-import { InlineAlertContent, InlineAlertTitle } from "./InlineAlert.styles";
 
 export interface InlineAlertProps {
     title: string | ReactNode;
@@ -27,8 +26,8 @@ const InlineAlert: FC<InlineAlertProps> = (p) => {
             }
             role="alert"
         >
-            <InlineAlertTitle className="font-bold">{p.title}</InlineAlertTitle>
-            <InlineAlertContent>{p.children}</InlineAlertContent>
+            <div className="font-bold">{p.title}</div>
+            <div>{p.children}</div>
         </div>
     );
 };

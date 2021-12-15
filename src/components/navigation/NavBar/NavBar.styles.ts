@@ -1,5 +1,4 @@
 import styled, { css, keyframes } from "styled-components";
-import tw from "twin.macro";
 
 const cssLoop = (
     steps: number,
@@ -54,7 +53,6 @@ const glitching = css`
         top: 0;
         pointer-events: none;
         margin: 6px 0 0 15px;
-        ${tw`bg-gray-900`}
     }
 
     &::before {

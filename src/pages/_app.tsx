@@ -122,7 +122,7 @@ const TRPCApp = withTRPC<AppRouter>({
         const url =
             process.env.NODE_ENV === "production"
                 ? `https://next.floffah.dev/api/trpc`
-                : "http://localhost:3000/api/trpc";
+                : "http://localhost:30000/api/trpc";
 
         return {
             url,

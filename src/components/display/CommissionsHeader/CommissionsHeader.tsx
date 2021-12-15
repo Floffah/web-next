@@ -1,9 +1,9 @@
 import React, { FC, RefObject, useEffect } from "react";
-import { CommissionsHeaderProductTab } from "./CommissionsHeader.styles";
 import { useAtom } from "jotai";
 import { commissionSelectedAtom } from "../../../lib/state/atoms/commissions";
 import { AppRouter } from "../../../lib/api/trpc/router";
 import { inferProcedureOutput } from "@trpc/server";
+import { c } from "../../../lib/util/class";
 
 export interface CommissionsHeaderProps {
     headerRef: RefObject<HTMLDivElement>;
@@ -35,17 +35,21 @@ const CommissionsHeader: FC<CommissionsHeaderProps> = (p) => {
         >
             <div className="absolute bottom-0 left-0 w-full h-fit">
                 {p.products?.map((p, id) => (
-                    <CommissionsHeaderProductTab
-                        className="inline-block m-0 pt-0 px-2.5 pb-1.5 cursor-pointer select-none"
+                    <div
+                        className={c(
+                            "inline-block m-0 pt-0 px-2.5 pb-1.5 cursor-pointer select-none",
+                            commissionSelected === p.id
+                                ? "border-b-2 border-solid border-gray-500 font-bold"
+                                : "",
+                        )}
                         key={id}
-                        selected={commissionSelected === p.id}
                         onClick={() => {
                             if (commissionSelected !== p.id)
                                 setCommissionSelected(p.id);
                         }}
                     >
                         {p.name}
-                    </CommissionsHeaderProductTab>
+                    </div>
                 ))}
             </div>
         </div>

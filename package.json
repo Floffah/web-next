@@ -3,19 +3,20 @@
     "private": true,
     "scripts": {
         "prisma-generate-prod": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy' prisma generate",
-        "migrate-prod": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
+        "migrate-prod": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy",
+        "dev": "yarn next dev -p 30000"
     },
     "devDependencies": {
-        "@babel/core": "^7.16.0",
-        "@babel/plugin-transform-reserved-words": "^7.16.0",
+        "@babel/core": "^7.16.5",
+        "@babel/plugin-transform-reserved-words": "^7.16.5",
         "@types/common-tags": "^1.8.1",
-        "@types/node": "^16.11.12",
+        "@types/node": "^16.11.13",
         "@types/react": "^17.0.37",
         "@types/react-dom": "^17.0.11",
-        "@types/styled-components": "^5.1.17",
+        "@types/styled-components": "^5.1.18",
         "@types/twemoji": "^12.1.2",
-        "@typescript-eslint/eslint-plugin": "^5.6.0",
-        "@typescript-eslint/parser": "^5.6.0",
+        "@typescript-eslint/eslint-plugin": "^5.7.0",
+        "@typescript-eslint/parser": "^5.7.0",
         "autoprefixer": "^10.4.0",
         "babel-plugin-macros": "^3.1.0",
         "babel-plugin-polished": "^1.1.0",
@@ -26,13 +27,13 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-react": "^7.27.1",
         "next-transpile-modules": "^9.0.0",
-        "npm-check-updates": "^12.0.3",
-        "postcss": "^8.4.4",
+        "npm-check-updates": "^12.0.5",
+        "postcss": "^8.4.5",
         "postcss-import": "^14.0.2",
         "prettier": "^2.5.1",
         "prisma": "^3.6.0",
-        "tailwindcss": "^2.2.19",
-        "typescript": "^4.5.2",
+        "tailwindcss": "^3.0.5",
+        "typescript": "^4.5.4",
         "webpack": "^5.65.0"
     },
     "dependencies": {
@@ -58,7 +59,7 @@
         "react-hotkeys-hook": "^3.4.4",
         "react-is": "^17.0.2",
         "react-markdown": "^7.1.1",
-        "react-query": "^3.34.0",
+        "react-query": "^3.34.4",
         "react-use": "^17.3.1",
         "remark-gfm": "^3.0.1",
         "styled-components": "^5.3.3",
@@ -66,6 +67,5 @@
         "twin.macro": "^2.8.2",
         "typed-emitter": "^1.4.0",
         "zod": "^3.11.6"
-    },
-    "packageManager": "yarn@3.1.1"
+    }
 }

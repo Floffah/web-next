@@ -9,6 +9,7 @@ import { ApiTokenName } from "../../../lib/util/storage/localstorage";
 import Icon from "@mdi/react";
 import { mdiLoading } from "@mdi/js";
 import { signIn, useSession } from "next-auth/react";
+import { c } from "../../../lib/util/class";
 
 // import floffahIcon from "/public/android-chrome-512x512.png";
 
@@ -73,7 +74,10 @@ const NavBar: FC<NavBarProps> = (p) => {
             <div>
                 <NavBarFloffahTitle
                     doingMagic={isToggled}
-                    className="inline-block text-gray-400 font-extrabold text-2xl mt-1.5 ml-3.5 select-none"
+                    className={c(
+                        "inline-block text-gray-400 font-extrabold text-2xl mt-1.5 ml-3.5 select-none",
+                        isToggled ? "after:bg-gray-900 before:bg-gray-900" : "",
+                    )}
                 >
                     <span
                         onClick={() => router.push("/")}

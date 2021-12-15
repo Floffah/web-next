@@ -7,4 +7,7 @@ module.exports = require("next-transpile-modules")(["crypto-random-string"])({
     images: {
         domains: ["twemoji.maxcdn.com"],
     },
+    experimental: {
+        styledComponents: true,
+    },
 });

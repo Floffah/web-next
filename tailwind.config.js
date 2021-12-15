@@ -2,14 +2,13 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-    mode: "jit",
     important: false,
     darkMode: "class",
     i18n: {
         locales: ["en-US"],
         defaultLocale: "en-US",
     },
-    purge: [
+    content: [
         "./src/pages/**/*.{js,ts,jsx,tsx}",
         "./src/components/**/*.{js,ts,jsx,tsx}",
         "./src/styles/**/*.{css,less,sass,scss}",
@@ -17,8 +16,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                gray: {
-                    ...colors.blueGray,
+                slate: {
+                    ...colors.slate,
                     350: "#bdcad9",
                     950: "#090c13",
                 },
